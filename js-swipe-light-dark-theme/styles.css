@@ -1,98 +1,95 @@
 *, *::before, *::after{
     box-sizing: border-box;
+   
 }
 body{
-    
+    --rotation: 0;
     --orange-color: rgb(226, 99, 31);
     --yello-color: rgb(226, 180, 31);
     --background-color: rgb(40, 38, 32);
     --dark-color: #333;
-
-    transition: 1s;
     margin: 0;
+    overflow: hidden;
+    transition: 0.7s ;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    font-family:Geneva, Verdana, sans-serif;
 
 }
 
 
 @layer day{
 
-    .icon{
+    .main-button{
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        border: none;
+        margin: 0px;
+        background-color: var(--orange-color);
+        color: white;
+        transform: scale(1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .icon-sun-moon{
+        margin-right: 10px;
+        
+    }
 
+    .moon{
+        bottom: 5%;
+        opacity: 0;
+        transform: rotate(180deg);
+    }
+    .sun{
+        top: 5%;
+    }
+
+    .sun, .moon{
+        position: absolute;
+        transition: opacity, 0.6s;
+        width: 30px;
+        height: 30px;
+    }
+
+    .icon{
+        --rotation: 0;
         position: absolute;
         display: flex;
         justify-content: center;
-        width: 100vw; 
+        align-items: center;
+      pointer-events: none; 
+        height: 200vmin;
         color: var(--orange-color);
-        margin: 0;
-        top: 5rem;
-        pointer-events: none;
-       
-    }
-    
+        top: 3.5rem;
+        top: 0;
 
-     #moon{
-        display: none;
-        
-    }
-    
-    .center{
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        margin: 0;
-    }
+        transform: rotate(calc(var(--rotation) * 1deg));
+        transition: transform 1s;
 
-    h1, main-button{
-        margin-top: 40vh;
     }
-
-     .center > h1, button{
-        margin-top: 15rem;
-     }
-    
-    
-    h1{
-        text-align: center;
-    }
-    
-    .main-button{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 10rem;
-        height: 2.5rem;
-        margin: auto;
-        border-radius: 5px;
-        border: none;
-        background-color: var(--orange-color);
-        color: white;
-        transition: all 0.5s ease-in-out;
-        transform: scale(1);
-        
-    }
-    
-    button>span{
-        margin-right: 5px;
-    }
-
-    
-    
 }
 
 @layer night{
 
     .main-button:hover, .main-button:focus{
- 
         cursor: pointer;
-        transition: all 0.5s ease-in-out;
         transform: scale(1.1);
     }
 
     .dark-mode{
         background-color: var(--dark-color);
-        transition: all 1s ease-in-out;
        
+    }
+
+
+    .dark-mode .sun{
+        opacity: 0;
     }
 
     .dark-mode h1{
@@ -105,17 +102,9 @@ body{
         
     }
 
-    .dark-mode #sun{
-        
-        position: absolute;
-        display: none;
-        
-       
-    }
-
-    .dark-mode #moon{
-        display: block;
+    .dark-mode .moon{
         color: var(--yello-color);
+        opacity: 1;
 
     }
 }

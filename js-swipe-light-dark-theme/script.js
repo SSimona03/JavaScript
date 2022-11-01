@@ -1,8 +1,10 @@
 
-let rotate = document.querySelector('.icon')
+let iconRotate = document.querySelector('.icon')
 
 document.querySelector(".main-button").addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
-    rotate.style.setProperty(0, 180);
+    let currentRotation = parseInt(getComputedStyle(iconRotate).getPropertyValue('--rotation'));
+    iconRotate.style.setProperty('--rotation', currentRotation + 180)
     
 })
+
