@@ -9,34 +9,44 @@ body{
     --dark-color: #333;
 
     transition: 1s;
-   
+    margin: 0;
 
 }
+
 
 @layer day{
 
     .icon{
+
+        position: absolute;
         display: flex;
         justify-content: center;
-        margin-top: 5rem; 
+        width: 100vw; 
         color: var(--orange-color);
-        
-        
+        margin: 0;
+        top: 5rem;
+        pointer-events: none;
+       
     }
     
 
-   
-
      #moon{
         display: none;
-     
+        
     }
     
     .center{
         display: flex;
         justify-content: center;
         flex-direction: column;
+        align-items: center;
+        margin: 0;
     }
+
+    h1, main-button{
+        margin-top: 40vh;
+    }
+
      .center > h1, button{
         margin-top: 15rem;
      }
