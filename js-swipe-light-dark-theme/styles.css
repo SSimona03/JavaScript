@@ -1,0 +1,111 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+body{
+    
+    --orange-color: rgb(226, 99, 31);
+    --yello-color: rgb(226, 180, 31);
+    --background-color: rgb(40, 38, 32);
+    --dark-color: #333;
+
+    transition: 1s;
+   
+
+}
+
+@layer day{
+
+    .icon{
+        display: flex;
+        justify-content: center;
+        margin-top: 5rem; 
+        color: var(--orange-color);
+        
+        
+    }
+    
+
+   
+
+     #moon{
+        display: none;
+     
+    }
+    
+    .center{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+     .center > h1, button{
+        margin-top: 15rem;
+     }
+    
+    
+    h1{
+        text-align: center;
+    }
+    
+    .main-button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 10rem;
+        height: 2.5rem;
+        margin: auto;
+        border-radius: 5px;
+        border: none;
+        background-color: var(--orange-color);
+        color: white;
+        transition: all 0.5s ease-in-out;
+        transform: scale(1);
+        
+    }
+    
+    button>span{
+        margin-right: 5px;
+    }
+
+    
+    
+}
+
+@layer night{
+
+    .main-button:hover, .main-button:focus{
+ 
+        cursor: pointer;
+        transition: all 0.5s ease-in-out;
+        transform: scale(1.1);
+    }
+
+    .dark-mode{
+        background-color: var(--dark-color);
+        transition: all 1s ease-in-out;
+       
+    }
+
+    .dark-mode h1{
+        color: white;
+    }
+
+    .dark-mode .main-button{
+        background-color: var(--yello-color);
+        color: var(--dark-color);
+        
+    }
+
+    .dark-mode #sun{
+        
+        position: absolute;
+        display: none;
+        
+       
+    }
+
+    .dark-mode #moon{
+        display: block;
+        color: var(--yello-color);
+
+    }
+}
