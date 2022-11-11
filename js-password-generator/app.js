@@ -1,47 +1,53 @@
-const letters ='opqrstuvwxyzabcdefghijklmn';
-const numbers = "5678901234";
-const capsLetters = 'NOPQRSTUVWXYZABCDEFGHIJKLM';
-const symbols = '.,?!@#*+-.,?!@#*+-'
-
-
-let newString = letters;
-
-
 const button = document.querySelector('#generate');
-const passwordDisplay = document.querySelector(".password");
 
 
+function generatePassword(passwordLength, validStrings) {
+    const valid = validStrings.join('')
 
-function newPassword(passwordLength) {
     let password ='';
 
-         for( let i = 0; i < passwordLength ; i++){
-            password += newString.charAt(Math.floor(Math.random() * newString.length))
-        }
+    for( let i = 0; i < passwordLength ; i++){
+        password += valid.charAt(Math.floor(Math.random() * valid.length))
+    }
     return password;
 }
 
-
 button.addEventListener("click", ()=>{
+    const LETTERS ='opqrstuvwxyzabcdefghijklmn';
+    const NUMBERS = "5678901234";
+    const CAPSLETTERS = 'NOPQRSTUVWXYZABCDEFGHIJKLM';
+    const SYMBOLS = '.,?!@#*+-.,?!@#*+-'
+
+    const passwordDisplay = document.querySelector(".password");
+
    
-    let numberPasswordChar = document.getElementById('number').value;
-    if(numberPasswordChar== '' || numberPasswordChar < 4 ) {
-        document.getElementById('number').value = "4"
-        numberPasswordChar = "4";
-    }
+    const numberOfCharacters = Math.max(document.getElementById('number').value ?? 4, 4)
+    document.getElementById('number').value = numberOfCharacters
 
-    if(document.getElementById("numbers").checked)
-        newString = newString.concat(numbers);
 
-    if (document.getElementById("uppercase").checked )
-        newString = newString.concat(capsLetters);
+    const isNumbersChecked = document.getElementById("numbers").checked;
+    const isUppercaseChecked = document.getElementById("uppercase").checked;
+    const isSymbolsChecked = document.getElementById("symbols").checked;
+
+    const valid = [
+        LETTERS,
+        ...(isNumbersChecked ? [NUMBERS] : [] ),
+        ...(isUppercaseChecked ? [CAPSLETTERS] : [] ),
+        ...(isSymbolsChecked ? [SYMBOLS] : [] )
     
-    if(document.getElementById("symbols").checked)
-        newString = newString.concat(symbols);
+    ];
 
-        passwordDisplay.innerText= newPassword(numberPasswordChar);
-       console.log(newString)
+    // if(isNumbersChecked)
+    //     valid.push(NUMBERS)
 
-       newString = letters;
+    // if(isUppercaseChecked)
+    //     valid.push(CAPSLETTERS)
+
+    // if(isSymbolsChecked)
+    //     valid.push(SYMBOLS)
+
+
+    passwordDisplay.innerText= generatePassword(numberOfCharacters, valid);
+
 })
 
