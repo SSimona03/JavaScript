@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+</head>
+<body>
+    <h1>Password Generator</h1>
+
+    <div class="container">
+        <div class="password">Password</div>
+        <form class="include">
+            <label for="number">Number of Characters<input type="number" id="number"  name="number" max="25" name="number" placeholder="4 - 25" onkeyup="if(this.value > 25){this.value = 25}; this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');"></label>
+            
+            <label >Include Uppercase <input type="checkbox" id="uppercase"></label>
+            
+            <label >Include Numbers<input type="checkbox" id="numbers"></label>
+            
+            <label >Include Symbols <input type="checkbox" id="symbols"></label>
+           
+            <button type="button" id="generate" >Generate</button> 
+            <!-- onclick="this.form.reset()" -->
+        </form>
+    
+    </div>
+</body>
+</html>
