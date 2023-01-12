@@ -10,6 +10,7 @@ function generatePassword(passwordLength, validStrings) {
         password += valid.charAt(Math.floor(Math.random() * valid.length))
     }
     return password;
+   
 }
 
 button.addEventListener("click", ()=>{
@@ -51,3 +52,4 @@ button.addEventListener("click", ()=>{
 
 })
 
+console.log(1+2) 
